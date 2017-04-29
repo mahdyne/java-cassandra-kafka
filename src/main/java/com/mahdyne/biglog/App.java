@@ -25,20 +25,7 @@ public class App {
         CassConnectionCfg conf1 = new CassConnectionCfg(9042, contact_points, "cassandra", "cassandra", "big_log");
         CassConnection.DB.connect(conf1);
         ResultSet results = CassConnection.DB.getSession().execute("select * from table1");
-        
+
         CassConnection.DB.shutdown();
     }
-
-        /*Cluster cluster=Cluster.builder().addContactPoint("localhost").build();
-        Session session=cluster.connect("logging");
-        Statement select_h1= QueryBuilder.select().all()
-                .from("logging","big_log")
-                .where(eq("host_name","h1"));
-        ResultSet results=session.execute(select_h1);
-        for (Row row:results){
-            System.out.println(row.getString("host_name")+"|"
-            +row.getString("log_type")+"|"+row.getString("log_value")+"|"+row.getString("service"));
-        }
-        System.out.println("protocol version:"+cluster.getConfiguration().getProtocolOptions().getProtocolVersion().name());
-        cluster.close();*/
 }
